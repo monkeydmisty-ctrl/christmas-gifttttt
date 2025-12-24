@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merry Christmas bibi ❤️</title>
+
+<!-- Modern UI Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  background: #0b1020;
+  overflow: hidden;
+}
+
+/* ---------- INTRO ---------- */
+#intro {
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+    url("https://images.unsplash.com/photo-1608889175123-8ee5f8baf2c9?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.open-btn {
+  padding: 22px 42px;
+  border-radius: 14px;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: #ff5c8a;
+  color: white;
+  cursor: pointer;
+  animation: glow 1.6s infinite;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 0 rgba(255,92,138,0.6); }
+  50% { box-shadow: 0 0 40px rgba(255,92,138,0.9); }
+  100% { box-shadow: 0 0 0 rgba(255,92,138,0.6); }
+}
+
+/* ---------- MAIN SITE ---------- */
+#site {
+  display: none;
+  height: 100vh;
+  overflow-y: auto;
+  background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+    url("https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+/* HERO */
+.hero {
+  padding: 140px 20px 80px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  opacity: 0.9;
+}
+
+/* ---------- AESTHETIC ITEMS ---------- */
+.items {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin: 80px 0;
+}
+
+.item {
+  width: 140px;
+  height: 160px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.item:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+/* ---------- POPUP ---------- */
+#popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.popup-card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(16px);
+  padding: 34px;
+  border-radius: 20px;
+  max-width: 340px;
+  animation: pop 0.35s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ---------- SNOW ---------- */
+.snow {
+  position: fixed;
+  top: -10px;
+  font-size: 14px;
+  pointer-events: none;
+  opacity: 0.8;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+
+/* ---------- FIREWORK ---------- */
+.firework {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+  to {
+    transform: translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+  <button class="open-btn" onclick="openGift()">Tap here baby 🎄</button>
+</div>
+
+<!-- SITE -->
+<div id="site">
+  <div class="hero">
+    <h1>Merry Christmas my moma:3 </h1>
+    <p>I didnt had much time to make a cool site this is all i could make.</p>
+  </div>
+
+  <div class="items">
+    <div class="item" onclick="showMessage('gift')">🎁</div>
+    <div class="item" onclick="showMessage('sock')">🧦</div>
+  </div>
+</div>
+
+<!-- POPUP -->
+<div id="popup" onclick="closePopup()">
+  <div class="popup-card" id="popupText"></div>
+</div>
+
+<script>
+/* OPEN */
+function openGift() {
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("site").style.display = "block";
+}
+
+/* MESSAGES */
+const messages = {
+  gift: "as your gift im giving youu blessings and my love as always hope you always stay happy and we celebrate our every christmas together ❤️",
+  sock: "you are the best thing happened to me i dont want any gift you are my biggest gift my baby 🧦💕"
+};
+
+function showMessage(type) {
+  document.getElementById("popupText").innerText = messages[type];
+  document.getElementById("popup").style.display = "flex";
+  fireworks();
+}
+
+/* CLOSE */
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+/* FIREWORKS */
+function fireworks() {
+  for (let i = 0; i < 26; i++) {
+    const f = document.createElement("div");
+    f.className = "firework";
+    f.style.left = "50%";
+    f.style.top = "50%";
+    f.style.background = `hsl(${Math.random()*360},100%,70%)`;
+    f.style.setProperty("--x", `${(Math.random()-0.5)*260}px`);
+    f.style.setProperty("--y", `${(Math.random()-0.5)*260}px`);
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1000);
+  }
+}
+
+/* SNOW */
+setInterval(() => {
+  const s = document.createElement("div");
+  s.className = "snow";
+  s.textContent = "❄";
+  s.style.left = Math.random()*window.innerWidth+"px";
+  s.style.animationDuration = (Math.random()*4+6)+"s";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),10000);
+}, 300);
+</script>
+
+</body>
+</html>
